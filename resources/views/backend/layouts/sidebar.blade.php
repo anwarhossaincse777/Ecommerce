@@ -346,7 +346,7 @@ $route=\Illuminate\Support\Facades\Route::current()->getName();
         </li>
 
 
-{{--        <li class="nav-item has-treeview {{($prefix=='/product')?'menu-open':''}}">--}}
+       <li class="nav-item has-treeview {{($prefix=='/product')?'menu-open':''}}">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
@@ -357,9 +357,9 @@ $route=\Illuminate\Support\Facades\Route::current()->getName();
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-{{--                    <a href="{{route('product.view')}}" class="nav-link {{($route=='product.view')?'active':''}}">--}}
+                 <a href="{{route('product.index')}}" class="nav-link {{($route=='product.index')?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>View Product</p>
+                        <p>View Products</p>
                     </a>
                 </li>
 

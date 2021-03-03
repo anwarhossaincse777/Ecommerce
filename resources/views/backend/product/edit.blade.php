@@ -36,7 +36,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3>Edit Products
-                                    <a class="btn btn-success float-right btn-sm" href="{{route('product.view')}}">
+                                    <a class="btn btn-success float-right btn-sm" href="{{route('product.index')}}">
                                         <i class="fa fa-plus-circle">
 
                                         </i>
@@ -49,19 +49,22 @@
 
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">Edit Product <strong>{{$editData->name}}</strong>  </h3>
+                                        <h3 class="card-title">Edit Product <strong>{{$product->name}}</strong>  </h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
 
-                                        <form role="form" method="post" action="{{route('product.update',['id'=>$editData->id])}}" id="myForm" enctype="">
+                                        <form action="{{ route('product.update',$product->id) }}" method="POST">
+
                                             @csrf
+
+                                            @method('PUT')
                                             <div class="row">
 
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <div class="form-group">
                                                         <label>Product Name</label>
-                                                        <input type="text" name="name" id="name" class="form-control input-sm" value="{{$editData->name}}" required>
+                                                        <input type="text" name="name" id="name" class="form-control input-sm" value="{{$product->name}}" required>
                                                         <span style="color:red">{{($errors->has('name'))?($errors->first('name')):''}}</span>
                                                     </div>
                                                 </div>
@@ -70,24 +73,9 @@
                                                     <div class="form-group">
                                                         <label>Category</label>
                                                         <select name="category_id" id="category" class="form-control select2" style="width: 100%;" >
-                                                            <option value="" >Select Category</option>
+                                                            <option>Select Category</option>
                                                             @foreach($categories as $category)
-                                                                <option value="{{$category->id}}" {{($editData->category_id==$category->id)?"selected":''}}>{{$category->name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Suppliers</label>
-                                                        <select name="supplier_id" id="supplier" class="form-control select2" style="width: 100%;" >
-                                                            <option value="" >Select Suppliers</option>
-                                                            @foreach($suppliers as $supply)
-                                                                <option value="{{$supply->id}}" {{($editData->supplier_id==$supply->id)?"selected":''}}>{{$supply->name}}</option>
+                                                                <option value="{{$category->id}}" {{($product->category_id==$category->id)?"selected":''}}>{{$category->name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -95,28 +83,43 @@
 
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <div class="form-group">
-                                                        <label>Units</label>
-                                                        <select name="unit_id" id="unit" class="form-control select2" style="width: 100%;" >
-                                                            <option value="" >Select Unit</option>
-                                                            @foreach($units as $unit)
-                                                                <option value="{{$unit->id}}" {{($editData->unit_id==$unit->id)?"selected":''}}>{{$unit->name}}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        <label>Price</label>
+                                                        <input type="text" name="price" id="price" class="form-control input-sm" value="{{$product->price}}">
+                                                        <span style="color:red">{{($errors->has('price'))?($errors->first('price')):''}}</span>
                                                     </div>
                                                 </div>
 
-                                            </div>
-
-                                            <div class="row ">
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <div class="form-group">
-                                                        <label>Quantity</label>
-                                                        <input type="text" name="quantity" id="quantity" class="form-control input-sm" value="{{$editData->quantity}}" required>
+                                                        <label>Selling Price</label>
+                                                        <input type="text" name="selling_price" id="selling_price" class="form-control input-sm" value="{{$product->selling_price}}" required>
+                                                        <span style="color:red">{{($errors->has('selling_price'))?($errors->first('selling_price')):''}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Slug</label>
+                                                        <input type="text" name="slug" id="slug" class="form-control input-sm" value="{{$product->slug}}" required>
+                                                        <span style="color:red">{{($errors->has('slug'))?($errors->first('slug')):''}}</span>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Description</label>
+                                                        <input type="text" name="description" id="description" class="form-control input-sm" value="{{$product->description}}" required>
+                                                        <span style="color:red">{{($errors->has('description'))?($errors->first('description')):''}}</span>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <input type="submit" value="Submit" class="btn btn-info btn-block">
+                                            <div class="col-xs-2 col-sm-2 col-md-2" style="padding-top:30px;">
+
+                                                <input type="submit" value="Update" class="btn btn-info btn-block">
+
+                                            </div>
 
                                         </form>
 

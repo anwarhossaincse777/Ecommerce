@@ -36,7 +36,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3>Products List
-                                    <a class="btn btn-success float-right btn-sm" href="{{route('product.add')}}">
+                                    <a class="btn btn-success float-right btn-sm" href="{{route('product.create')}}">
                                         <i class="fa fa-plus-circle">
 
                                         </i>
@@ -95,8 +95,9 @@
                                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">SL</th>
                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Product Name</th>
                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Category</th>
-                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Brand</th>
+{{--                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Brand</th>--}}
                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Price</th>
+                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Selling Price</th>
                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Image</th>
                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th>
                                                         </tr>
@@ -104,13 +105,15 @@
                                                         </thead>
 
                                                         <tbody>
-                                                        @foreach($allData as $key=>$product)
+                                                        @foreach($products as $key=>$product)
                                                             <tr class="{{$product->id}}"role="row" class="odd">
                                                                 <td class="dtr-control sorting_1" tabindex="0">{{$key+1}}</td>
                                                                 <td>{{$product->name}}</td>
-                                                                <td>{{$product['category']['name']}}</td>
-                                                                <td>{{$product['brand']['name']}}</td>
+
+{{--                                                                <td>{{$product['brand']['name']}}</td>--}}
+                                                                <td></td>
                                                                 <td>{{$product->price}}</td>
+                                                                <td>{{$product->selling_price}}</td>
                                                                 <td>
                                                                     <div style="max-width:200px; max-height:200px;overflow: hidden">
 
@@ -124,29 +127,29 @@
 
 
                                                                 <td>
-                                                                    <a  title="Edit" href="{{route('product.edit',['id'=>$product->id])}}" class="btn btn-sm btn-primary">
+                                                                    <a  title="Edit" href="{{route('product.edit',['product'=>$product->id])}}" class="btn btn-sm btn-primary">
 
                                                                         <i class="fa fa-edit">
 
                                                                         </i>
 
                                                                     </a>
-                                                                    <a  title="Details" href="{{route('product.details',['id'=>$product->id])}}" class="btn btn-sm btn-success">
+{{--                                                                    <a  title="Details" href="{{route('product.details',['id'=>$product->id])}}" class="btn btn-sm btn-success">--}}
 
-                                                                        <i class="fa fa-eye">
+{{--                                                                        <i class="fa fa-eye">--}}
 
-                                                                        </i>
+{{--                                                                        </i>--}}
 
-                                                                    </a>
+{{--                                                                    </a>--}}
 
 
-                                                                    <a  title="Delete" id="delete" href="{{route('product.delete')}}" data-token="{{csrf_token()}}" data-id="{{$product->id}}" class="btn btn-sm btn-danger">
+{{--                                                                    <a  title="Delete" id="delete" href="{{route('product.delete')}}" data-token="{{csrf_token()}}" data-id="{{$product->id}}" class="btn btn-sm btn-danger">--}}
 
-                                                                        <i class="fa fa-trash">
+{{--                                                                        <i class="fa fa-trash">--}}
 
-                                                                        </i>
+{{--                                                                        </i>--}}
 
-                                                                    </a>
+{{--                                                                    </a>--}}
 
 
                                                                 </td>

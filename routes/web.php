@@ -32,6 +32,7 @@ Route::prefix('admin')->group(function (){
 
     Route::resource('page','\App\Http\Controllers\PageController');
     Route::resource('category','\App\Http\Controllers\CategoryController');
+    Route::resource('product','\App\Http\Controllers\ProductController');
 
 });
 

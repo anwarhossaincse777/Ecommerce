@@ -93,6 +93,7 @@ class CategoryController extends Controller
 
             'name'=>'required|unique:categories|min:6',
         ]);
+
         $category->name=$request->name;
 
         $category->save();

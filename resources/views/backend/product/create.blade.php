@@ -35,14 +35,14 @@
 
                         <div class="card">
 
-                                <div class="card-header">
-                                    @if(isset($editData))
+{{--                                <div class="card-header">--}}
+{{--                                    @if(isset($editData))--}}
 
-                                        <h3 class="card-title">Edit Product</h3>
-                                    @else
-                                        <h3 class="card-title">Add Product</h3>
-                                    @endif
-                                </div>
+{{--                                        <h3 class="card-title">Edit Product</h3>--}}
+{{--                                    @else--}}
+{{--                                        <h3 class="card-title">Add Product</h3>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
 
                             <div class="card-body">
 
@@ -60,20 +60,21 @@
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <div class="form-group">
                                                         <label>Product Name</label>
-                                                        <input type="text" name="name" id="name" value="{{@$editData->name}}" class="form-control input-sm" placeholder="Name" required>
-                                                        <span style="color:red">{{($errors->has('name'))?($errors->first('name')):''}}</span>
+                                                      <input type="text" name="name" id="name" value="{{@$editData->name}}" class="form-control input-sm" placeholder="Name" required>
+                                                      @error('name')
+
+                                                      <h1 class="text-danger">{{$message}}</h1>
+
+                                                  @enderror
+
                                                     </div>
                                                 </div>
 
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <div class="form-group">
-                                                        <label>Category</label>
-                                                        <select name="category_id" id="category" class="form-control " style="width: 100%;" >
-                                                            <option value="" >Select Category</option>
-                                                            @foreach($categories as $category)
-                                                            <option value="{{$category->id}}" {{(@$editData->category_id==$category->id)?"selected":""}} "> {{$category->name}}  </option>
-                                                            @endforeach
-                                                        </select>
+                                                        <label>Slug</label>
+                                                        <input type="text" name="slug" id="slug" value="{{@$editData->name}}" class="form-control input-sm" placeholder="slug" required>
+                                                        <span style="color:red">{{($errors->has('slug'))?($errors->first('slug')):''}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,25 +83,18 @@
                                             <div class="row">
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <div class="form-group">
-                                                        <label>Brands</label>
-                                                        <select name="brand_id" id="brand" class="form-control " style="width: 100%;" >
-                                                            <option value="" >Select Category</option>
-                                                            @foreach($brands as $brand)
-                                                                <option value="{{$brand->id}}" {{(@$editData->brand_id==$brand->id)?"selected":""}} "> {{$brand->name}}  </option>
-                                                            @endforeach
-                                                        </select>
+                                                        <label>Price</label>
+                                                        <input type="text" name="price" id="price" value="{{@$editData->name}}" class="form-control input-sm" placeholder="price" required>
+                                                        <span style="color:red">{{($errors->has('price'))?($errors->first('price')):''}}</span>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <div class="form-group">
-                                                        <label>Color</label>
+                                                        <label>Selling Price</label>
 
-                                                        <select name="color_id" id="color" class="form-control select2" multiple >
-                                                            @foreach($colors as $color)
-                                                                <option value="{{$color->id}}" {{(@in_array(['color_id'=>$color->id],$color_array))?"selected":""}}>{{$color->name}}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        <input type="text" name="selling_price" id="selling_price" value="{{@$editData->name}}" class="form-control input-sm" placeholder="selling_price" required>
+                                                        <span style="color:red">{{($errors->has('selling_price'))?($errors->first('selling_price')):''}}</span>
                                                     </div>
                                                 </div>
 
@@ -113,10 +107,10 @@
                                             <div class="row ">
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <div class="form-group">
-                                                        <label>Size</label>
-                                                        <select name="size_id" id="size" class="form-control  select2 " style="width: 100%;" multiple >
-                                                            @foreach($sizes as $size)
-                                                                <option value="{{$size->id}}" {{(@in_array(['size_id'=>$size->id],$size_array))?"selected":""}}>{{$size->name}}</option>
+                                                        <label>Category</label>
+                                                        <select name="category_id" id="category" class="form-control  select2 " style="width: 100%;" multiple >
+                                                           @foreach($categories as $category)
+                                                               <option value="{{$category->id}}" {{(@in_array(['category_id'=>$category->id],$category_array))?"selected":""}}>{{$category->name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -124,11 +118,11 @@
 
 
                                                 <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Short Description</label>
-                                                        <textarea name="short_desc"   class="form-control" id="" cols="30" rows="2">{{@$editData->short_desc}}</textarea>
-                                                        <span style="color:red">{{($errors->has('short_desc'))?($errors->first('short_desc')):''}}</span>
-                                                    </div>
+{{--                                                    <div class="form-group">--}}
+{{--                                                        <label>Short Description</label>--}}
+{{--                                                        <textarea name="short_desc"   class="form-control" id="" cols="30" rows="2">{{@$editData->short_desc}}</textarea>--}}
+{{--                                                        <span style="color:red">{{($errors->has('short_desc'))?($errors->first('short_desc')):''}}</span>--}}
+{{--                                                    </div>--}}
                                                 </div>
 
 
@@ -139,7 +133,7 @@
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <label>Long Description</label>
-                                                        <textarea name="long_desc"   class="form-control" id="" cols="30" rows="5">{{@$editData->long_desc}}</textarea>
+                                                        <textarea name="description"   class="form-control" id="" cols="30" rows="5">{{@$editData->long_desc}}</textarea>
                                                         <span style="color:red">{{($errors->has('long_desc'))?($errors->first('long_desc')):''}}</span>
                                                     </div>
                                                 </div>
@@ -151,11 +145,11 @@
                                         <div class="row">
 
                                                 <div class="col-xs-2 col-sm-2 col-md-2">
-                                                    <div class="form-group">
-                                                        <label>Price</label>
-                                                        <input type="number" name="price" value="{{@$editData->price}}"  class="form-control" ></input>
-                                                        <span style="color:red">{{($errors->has('price'))?($errors->first('price')):''}}</span>
-                                                    </div>
+{{--                                                    <div class="form-group">--}}
+{{--                                                        <label>Price</label>--}}
+{{--                                                        <input type="number" name="price" value="{{@$editData->price}}"  class="form-control" ></input>--}}
+{{--                                                        <span style="color:red">{{($errors->has('price'))?($errors->first('price')):''}}</span>--}}
+{{--                                                    </div>--}}
                                                 </div>
 
 
@@ -163,10 +157,10 @@
                                             <div class="col-xs-3 col-sm-3 col-md-3">
                                                 <div class="form-group">
                                                     <label for="image">Upload Image</label>
-                                                    <div class="custom-file">
-                                                        <input type="file" name="image"  class="custom-file-input" id="image" onchange="loadFile(event)">
-                                                        <label class="custom-file-label"  for="image">Chose Logo</label>
-                                                    </div>
+{{--                                                    <div class="custom-file">--}}
+{{--                                                        <input type="file" name="image"  class="custom-file-input" id="image" onchange="loadFile(event)">--}}
+{{--                                                        <label class="custom-file-label"  for="image">Chose Logo</label>--}}
+{{--                                                    </div>--}}
                                                 </div>
                                             </div>
 
