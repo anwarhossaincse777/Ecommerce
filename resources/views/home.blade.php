@@ -10,10 +10,10 @@
 
 
                    <div class="col col-md-6">
-                       <div class="splide">
+                       <div class="splide" >
                            <div class="splide__track">
                                <ul class="splide__list">
-                                   <li class="splide__slide text-center">
+                                   <li class="splide__slide text-center ">
                                        <div class="splide_slide_container">
                                            <img src="images/slide-1.jpg" alt="">
 
@@ -21,7 +21,7 @@
 
                                    </li>
 
-                                   <li class="splide__slide text-center">
+                                   <li class="splide__slide text-center ">
                                        <div class="splide_slide_container">
                                            <img src="images/slide-2.jpg" alt="">
 
@@ -30,7 +30,7 @@
 
                                    </li>
 
-                                   <li class="splide__slide text-center">
+                                   <li class="splide__slide text-center ">
                                        <div class="splide_slide_container">
                                            <img src="images/slide-3.jpg" alt="">
 
@@ -73,7 +73,10 @@
 
     <script>
         document.addEventListener( 'DOMContentLoaded', function () {
-            new Splide( '.splide' ).mount();
+            //new Splide( '.splide' ).mount();
+
+            new Splide( '.splide',{}).mount();
+
         } );
     </script>
 
