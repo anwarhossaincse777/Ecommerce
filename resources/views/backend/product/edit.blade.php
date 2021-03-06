@@ -54,6 +54,9 @@
                                     <!-- /.card-header -->
                                     <div class="card-body">
 
+                                        @livewire('product.images',['product'=>$product])
+
+
                                         <form action="{{ route('product.update',$product->id) }}" method="POST">
 
                                             @csrf

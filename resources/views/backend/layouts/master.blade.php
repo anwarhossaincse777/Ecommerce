@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
+@livewireStyles
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -465,5 +468,7 @@ $(document).on('click','#delete',function () {
     });
 
 </script>
+
+@livewireScripts
 </body>
 </html>

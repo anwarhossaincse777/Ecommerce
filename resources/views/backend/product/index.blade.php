@@ -98,6 +98,7 @@
 {{--                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Brand</th>--}}
                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Price</th>
                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Selling Price</th>
+                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">URL</th>
                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Image</th>
                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Action</th>
                                                         </tr>
@@ -110,15 +111,23 @@
                                                                 <td class="dtr-control sorting_1" tabindex="0">{{$key+1}}</td>
                                                                 <td>{{$product->name}}</td>
 
-{{--                                                                <td>{{$product['brand']['name']}}</td>--}}
-                                                                <td></td>
+                                                               <td>{{$product->category->name}}</td>
                                                                 <td>{{$product->price}}</td>
                                                                 <td>{{$product->selling_price}}</td>
+                                                                <td>{{$product->slug}}</td>
                                                                 <td>
-                                                                    <div style="max-width:200px; max-height:200px;overflow: hidden">
 
-                                                                        <img src="{{(!empty($product->image))?url('/upload/product_images/'.$product->image):url('public/upload/no_image.jpg')}}" alt="User  picture">
-                                                                    </div>
+
+
+                                                                            <div style="max-width:200px; max-height:200px;overflow: hidden">
+
+                                                                                @forelse($product->images as $image)
+                                                                                    <img src="{{ asset('storage/'.$image->image) }}" alt="" title="" class="w-25"/>
+                                                                                @empty
+                                                                                    <div class="text-danger"> NO image Found</div>
+
+                                                                                @endforelse
+                                                                            </div>
 
                                                                 </td>
 
@@ -142,14 +151,13 @@
 
 {{--                                                                    </a>--}}
 
+                                                                    <a onclick=" return deleteCat({{$product->id}})" class="btn btn-sm btn-danger"href=""><i class="fa fa-trash"></i></a>
+                                                                    <form id="cat{{$product->id}}" method="post" action="{{route('product.destroy',['product'=>$product->id])}}" >
 
-{{--                                                                    <a  title="Delete" id="delete" href="{{route('product.delete')}}" data-token="{{csrf_token()}}" data-id="{{$product->id}}" class="btn btn-sm btn-danger">--}}
+                                                                        @method('DELETE')
+                                                                        @csrf
 
-{{--                                                                        <i class="fa fa-trash">--}}
-
-{{--                                                                        </i>--}}
-
-{{--                                                                    </a>--}}
+                                                                    </form>
 
 
                                                                 </td>
@@ -191,6 +199,23 @@
         </section>
         <!-- /.content -->
     </div>
+
+
+
+    <script>
+        function deleteCat(productId) {
+            var x = confirm("Are you sure you want to delete?");
+            cat{{$product->id}}
+
+            document.getElementById('cat'+productId).submit();
+
+            if (x)
+                return true;
+            else
+                return false;
+
+        }
+    </script>
 
 @endsection
 

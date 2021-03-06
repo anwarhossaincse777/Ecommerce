@@ -13,10 +13,16 @@ class Product extends Model
 
     public function user(){
 
-        return $this->belongsTo(App\Models\User::class);
+        return $this->belongsTo(\App\Models\User::class);
     }
     public function category(){
-        return $this->belongsTo(App\Models\Category::class);
+        return $this->belongsTo(\App\Models\Category::class);
+
+    }
+
+    public function images(){
+
+        return $this->hasMany(\App\Models\Image::class);
 
     }
 }
