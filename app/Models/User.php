@@ -42,6 +42,8 @@ class User extends Authenticatable
     ];
 
 
+    Protected $guarded=[];
+
     public function products(){
 
         return $this->hasMany(\App\Models\Product::class);
@@ -49,4 +51,32 @@ class User extends Authenticatable
     }
 
 
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
+
+    public function assignRole($role)
+    {
+        if (is_string($role)) {
+            $role = Role::whereName($role)->firstOrFail();
+        }
+        $this->roles()->sync($role, false);
+    }
+
+    public function hasRole($role)
+    {
+        if (is_string($role)) {
+            $role = $this->roles()->whereName($role)->first();
+            if($role!=null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function permissions()
+    {
+        return $this->roles->map->permissions->flatten()->pluck('name')->unique();
+    }
 }

@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('welcome');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,11 +25,8 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
-
-Route::prefix('admin')->group(function (){
-
-
+Route::prefix('admin')->middleware('can:admin-login')->group(function (){
+    Route::get('panel','\App\Http\Controllers\HomeController@admin')->name('admin-panel');
     Route::resource('page','\App\Http\Controllers\PageController');
     Route::resource('category','\App\Http\Controllers\CategoryController');
     Route::resource('product','\App\Http\Controllers\ProductController');

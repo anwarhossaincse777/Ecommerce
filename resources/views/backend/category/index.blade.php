@@ -132,6 +132,7 @@
     <script>
     function deleteCat(catId) {
         var x = confirm("Are you sure you want to delete?");
+
          cat{{$category->id}}
 
         document.getElementById('cat'+catId).submit();

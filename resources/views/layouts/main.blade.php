@@ -35,112 +35,78 @@
 </head>
 
 <body>
-
 <div class="bg-primary text-center text-white p-2">#Learn Ecommerce Development</div>
 
-    <div class="container">
-        <div class="row  my-3">
-            <div class="col col-md-6" style="line-height:38px">{{config('app.name','Laravel')}}</div>
+
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
+    <p class="h5 my-0 me-md-auto fw-normal">{{config('app.name','Laravel')}}</p>
+    <nav class="my-2 my-md-0 me-md-3">
+        <a class="p-2 text-dark" href="#">Login</a>
+        <a class="p-2 text-dark" href="#">Register</a>
+
+    </nav>
+    <a class="btn btn-outline-primary" href="#">Cart</a>
+</header>
+
+<main class="container" style="min-height: 300px">
+
+    @yield('content')
 
 
 
+</main>
 
 
-            <div class="col col-md-6 text-end" style="line-height:38px" >
-                <a class="btn btn-sm  mx-2" href="{{route('login')}}">Login</a>
-                <a class="btn btn-sm  mx-2" href="{{route('register')}}" >Register</a>
+<div class="border-top">
+  <div class="container">
 
-              <span class="border p-2">
+    <footer class="pt-4 my-md-5 pt-md-5 ">
+        <div class="row">
+            <div class="col-12 col-md">
+                <img class="mb-2" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
+                <small class="d-block mb-3 text-muted">&copy; 2017–2021</small>
 
-                  <i class="fas fa-shopping-cart"></i> 0 <b>Items
-              </span>
+                Follow us at <br>
+                <a target="_blank" href=""><i class="fab fa-facebook-square  fa-2x"></i></a> &nbsp;
+                <a target="_blank" href=""><i class="fab fa-twitter-square fa-2x"></i></a> &nbsp;
+                <a target="_blank" href=""><i class="fab fa-youtube-square fa-2x"></i></a>
 
 
 
             </div>
+            <div class="col-6 col-md">
+                <h5>Features</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="link-secondary" href="#">Cool stuff</a></li>
+                    <li><a class="link-secondary" href="#">Random feature</a></li>
+                    <li><a class="link-secondary" href="#">Team feature</a></li>
+                    <li><a class="link-secondary" href="#">Stuff for developers</a></li>
+                    <li><a class="link-secondary" href="#">Another one</a></li>
+                    <li><a class="link-secondary" href="#">Last time</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="link-secondary" href="#">Resource</a></li>
+                    <li><a class="link-secondary" href="#">Resource name</a></li>
+                    <li><a class="link-secondary" href="#">Another resource</a></li>
+                    <li><a class="link-secondary" href="#">Final resource</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="link-secondary" href="#">Team</a></li>
+                    <li><a class="link-secondary" href="#">Locations</a></li>
+                    <li><a class="link-secondary" href="#">Privacy</a></li>
+                    <li><a class="link-secondary" href="#">Terms</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-
-
-    <div class="border-bottom">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#"><i class=" fa fa-home"></i></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Mens</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Womens</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">kids</a>
-                            </li>
-
-                        </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-
-        </div>
-
-    </div>
-
-@yield('content')
-
-        <div class="bg-secondary text-white" id="footer">
-
-           <div class="container">
-               <div class="row">
-                   <div class="col-md-3">
-
-                      <h5>{{config('app.name','Laravel')}}</h5>
-
-                       <p>This site Made for teaching Ecommerce</p>
-
-                   </div>
-                   <div class="col-md-3">
-
-                       <h5>Quick links</h5>
-                       <a href="">About</a><br>
-                       <a href="">Products</a><br>
-                       <a href="">Categories</a><br>
-                       <a href="">Help/Support</a><br>
-                   </div>
-                   <div class="col-md-3">
-
-                       <h5>Legal</h5>
-                       <a href="">Terms</a><br>
-                       <a href="">Privacy</a><br>
-                       <a href="">Refound Policy</a><br>
-                   </div>
-                   <div class="col-md-3">
-
-
-                       <div class="d-none d-md-block">
-                           Follow us at <br>
-                           <a target="_blank" href=""><i class="fab fa-facebook-square  fa-2x"></i></a> &nbsp;
-                           <a target="_blank" href=""><i class="fab fa-twitter-square fa-2x"></i></a> &nbsp;
-                           <a target="_blank" href=""><i class="fab fa-youtube-square fa-2x"></i></a>
-                       </div>
-
-                   </div>
-               </div>
-
-           </div>
-        </div>
-
+    </footer>
+</div>
+</div>
 </body>
 
 <!-- optional javascript choose one of the twol -->
