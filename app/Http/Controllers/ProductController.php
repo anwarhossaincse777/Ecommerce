@@ -22,6 +22,14 @@ class ProductController extends Controller
         return  view('backend.product.index',compact('products'));
     }
 
+    public function list()
+    {
+        //
+        $limit=10;
+        $products=Product::latest()->paginate($limit);
+        return  view('backend.product.list',compact('products'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -20,7 +20,7 @@
 
             font-size:0.85em;
         }
-    a{text-decoration: none;}
+    a{text-decoration: none; cursor: pointer}
         #footer a{color:#fff; line-height:30px;}
         #footer a:hover{text-decoration: underline}
 
@@ -39,11 +39,22 @@
 
 
 <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
-    <p class="h5 my-0 me-md-auto fw-normal">{{config('app.name','Laravel')}}</p>
+    <p class="h5 my-0 me-md-auto fw-normal">  <a href="{{url('/')}}"> {{config('app.name','Laravel')}}</a></p>
     <nav class="my-2 my-md-0 me-md-3">
-        <a class="p-2 text-dark" href="#">Login</a>
-        <a class="p-2 text-dark" href="#">Register</a>
 
+        @guest
+        <a class="p-2 text-dark" href="{{route('login')}}">Login</a>
+        <a class="p-2 text-dark" href="{{route('register')}}">Register</a>
+        @endguest
+        @if(\Illuminate\Support\Facades\Auth::check())
+                     <b>Welcome || {{\Illuminate\Support\Facades\Auth::user()->name}}</b>
+                <a href="{{route('dashboard')}}" class="p-2 text-dark" >Account</a>
+                <a class="p-2 text-dark" onclick="preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="{{route('logout')}}" method="post">
+                    @csrf
+                </form>
+
+            @endif
     </nav>
     <a class="btn btn-outline-primary" href="#">Cart</a>
 </header>
